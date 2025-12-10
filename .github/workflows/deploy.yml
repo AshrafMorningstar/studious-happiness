@@ -20,7 +20,7 @@ jobs:
       - name: Generate GitHub Stats
         uses: AshrafMorningstar/stats-action@main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         # This action typically outputs 'github-user-stats.json' in the root
 
       - name: Setup Node.js
