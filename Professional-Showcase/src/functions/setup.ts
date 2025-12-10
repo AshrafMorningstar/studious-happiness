@@ -1,4 +1,4 @@
-import {ContributionDay, Language} from '../Types';
+8import {ContributionDay, Language} from '../Types';
 import {UserStats} from '../config';
 
 const statsTemplate = (username: string) =>
@@ -54,7 +54,7 @@ export function mergeUsersStats(stats: UserStats[]): UserStats {
 			stat.contributionsCollection.contributionCalendar.totalContributions;
 
 		userStats.contributionsCollection.contributionCalendar.weeks.push(
-			...stat.contributionsCollection.contributionCalendar.weeks
+			...stat.contributionsCollection.contributionCalendar.weeks,
 		);
 	}
 
@@ -64,19 +64,38 @@ export function mergeUsersStats(stats: UserStats[]): UserStats {
 export function convertWeeksToDays(stats: UserStats) {
 	const days: ContributionDay[] = [];
 
-	for (const week of stats.contributionsCollection.contributionCalendar.weeks) {
-		days.push(...week.contributionDays);
+	const calendar: any = stats.contributionsCollection.contributionCalendar;
+
+	if (Array.isArray(calendar)) {
+		// Already processed or flat array
+		stats.contributionCalendar = calendar;
+		return;
+	}
+
+	if (calendar && Array.isArray(calendar.weeks)) {
+		for (const week of calendar.weeks) {
+			days.push(...week.contributionDays);
+		}
+	} else if (Array.isArray(stats.contributionCalendar)) {
+		// Fallback if it was already attached to the root property
+		return;
 	}
 
 	stats.contributionCalendar = days;
 }
 
 export function sortAndMergeContributionData(userStats: UserStats) {
+	if (
+		!userStats.contributionCalendar ||
+		!Array.isArray(userStats.contributionCalendar)
+	) {
+		return;
+	}
 	userStats.contributionCalendar.sort(
 		(a: ContributionDay, b: ContributionDay) => {
 			// @ts-expect-error This is a valid comparison
 			return new Date(a.date) - new Date(b.date);
-		}
+		},
 	);
 
 	for (
@@ -108,7 +127,7 @@ export function sortAndMergeTopLanguages(userStats: UserStats): UserStats {
 			value: 0,
 		};
 		for (const lang of userStats.topLanguages.filter(
-			(lang: Language) => lang.languageName === language.languageName
+			(lang: Language) => lang.languageName === language.languageName,
 		)) {
 			tempLang.value += lang.value;
 		}

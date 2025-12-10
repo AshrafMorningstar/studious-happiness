@@ -3,7 +3,12 @@ import './style.css';
 
 // Created by AshrafMorningstar - https://github.com/AshrafMorningstar
 
-import {getUserStats} from './functions/setup';
+import {
+	convertWeeksToDays,
+	getUserStats,
+	sortAndMergeContributionData,
+	sortAndMergeTopLanguages,
+} from './functions/setup';
 import {Config, MainProps, mainSchema} from './config';
 import {defaultStats} from './defaultStats';
 import {Card} from './components/Effects/Card';
@@ -19,7 +24,16 @@ export const RemotionRoot = () => {
 			usernames: string[];
 			userStats?: MainProps['userStats'];
 		};
-		const userStats = inputUserStats || (await getUserStats(usernames));
+
+		let userStats = inputUserStats;
+
+		if (userStats) {
+			convertWeeksToDays(userStats);
+			sortAndMergeContributionData(userStats);
+			userStats = sortAndMergeTopLanguages(userStats);
+		} else {
+			userStats = await getUserStats(usernames);
+		}
 
 		return {
 			props: {
