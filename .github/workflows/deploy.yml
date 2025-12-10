@@ -37,7 +37,7 @@ jobs:
 
       - name: Fix Permissions
         working-directory: ./Professional-Showcase
-        run: chmod -R +x node_modules/.bin
+        run: chmod -R +x node_modules
 
       - name: Inject Stats into Remotion
         working-directory: ./Professional-Showcase
