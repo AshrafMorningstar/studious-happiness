@@ -206,7 +206,16 @@ export function StatsContent({userStats}: {userStats: UserStats}) {
 								<div className="w-full bg-white/5 rounded-full h-1.5">
 									<div
 										className="bg-emerald-400 h-1.5 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.5)]"
-										style={{width: '80%'}}
+										style={{
+											width: `${
+												userStats.totalCommits > 0 // Just a check to avoid NaN if everything is 0, though unlikely for issues
+													? (userStats.closedIssues /
+															(userStats.openIssues + userStats.closedIssues ||
+																1)) *
+														100
+													: 0
+											}%`,
+										}}
 									/>
 								</div>
 							</div>
@@ -220,7 +229,16 @@ export function StatsContent({userStats}: {userStats: UserStats}) {
 								<div className="w-full bg-white/5 rounded-full h-1.5">
 									<div
 										className="bg-rose-400 h-1.5 rounded-full shadow-[0_0_8px_rgba(251,113,133,0.5)]"
-										style={{width: '20%'}}
+										style={{
+											width: `${
+												userStats.totalCommits > 0
+													? (userStats.openIssues /
+															(userStats.openIssues + userStats.closedIssues ||
+																1)) *
+														100
+													: 0
+											}%`,
+										}}
 									/>
 								</div>
 							</div>
