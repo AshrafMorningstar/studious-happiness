@@ -23,29 +23,25 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         # This action typically outputs 'github-user-stats.json' in the root
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 18
+          bun-version: latest
 
       - name: Install FFmpeg
         uses: FedericoCarboni/setup-ffmpeg@v2
 
       - name: Install Dependencies
         working-directory: ./Professional-Showcase
-        run: npm ci
-
-      - name: Fix Permissions
-        working-directory: ./Professional-Showcase
-        run: chmod -R +x node_modules
+        run: bun install
 
       - name: Inject Stats into Remotion
         working-directory: ./Professional-Showcase
-        run: node inject-stats.js ../github-user-stats.json
+        run: bun run inject-stats.js ../github-user-stats.json
 
       - name: Render Showcases
         working-directory: ./Professional-Showcase
-        run: npm run render
+        run: bun run render
 
       - name: Prepare Output Directory
         run: |

@@ -8,7 +8,7 @@
 	],
 	"scripts": {
 		"start": "remotion studio --props ./input.json",
-		"render": "npm run render:stats && npm run render:languages && npm run render:readme && npm run render:main-stats && npm run render:issue-tracking && npm run render:code-metrics && npm run render:activity-overview && npm run render:commit-streak && npm run render:top-languages && npm run render:dashboard",
+		"render": "bun run render:stats && bun run render:languages && bun run render:readme && bun run render:main-stats && bun run render:issue-tracking && bun run render:code-metrics && bun run render:activity-overview && bun run render:commit-streak && bun run render:top-languages && bun run render:dashboard",
 		"render:stats": "remotion render --props ./input.json stats out/stats.gif",
 		"render:languages": "remotion render --props ./input.json languages out/languages.gif",
 		"render:readme": "remotion render --props ./input.json readme out/readme.gif",
