@@ -1,0 +1,42 @@
+name: Render Professional Showcase
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  render:
+    name: Render GIFs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    defaults:
+      run:
+        working-directory: ./Professional-Showcase
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Render GIFs
+        run: npm run render
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "AshrafMorningstar-Bot"
+          git config --global user.email "bot@ashrafmorningstar.com"
+          git add out/*.gif
+          git commit -m "chore: update profile visuals [skip ci]" || echo "No changes to commit"
+          git push origin HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
