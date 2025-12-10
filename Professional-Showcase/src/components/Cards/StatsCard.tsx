@@ -102,7 +102,24 @@ export function StatsContent({userStats}: {userStats: UserStats}) {
 
 	// Calculate streak
 	const currentStreak = (() => {
-		const days = [...userStats.contributionCalendar].reverse();
+		let days: any[] = [];
+		const calendar: any = userStats.contributionCalendar;
+
+		if (Array.isArray(calendar)) {
+			// It's already an array of days (likely from our processed defaults)
+			days = [...calendar].reverse();
+		} else if (
+			calendar &&
+			typeof calendar === 'object' &&
+			Array.isArray(calendar.weeks)
+		) {
+			// It's the GitHub API structure, flatten weeks -> days
+			days = calendar.weeks.flatMap((w: any) => w.contributionDays).reverse();
+		} else {
+			// Fallback or unexpected format
+			return 0;
+		}
+
 		let streak = 0;
 		let i = 0;
 		// Skip today if 0 (streak not technically broken until end of day)
