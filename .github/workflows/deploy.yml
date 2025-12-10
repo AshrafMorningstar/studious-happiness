@@ -35,6 +35,10 @@ jobs:
         working-directory: ./Professional-Showcase
         run: npm ci
 
+      - name: Fix Permissions
+        working-directory: ./Professional-Showcase
+        run: chmod -R +x node_modules/.bin
+
       - name: Inject Stats into Remotion
         working-directory: ./Professional-Showcase
         run: node inject-stats.js ../github-user-stats.json
