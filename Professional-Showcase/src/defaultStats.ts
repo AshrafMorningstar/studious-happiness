@@ -85,8 +85,24 @@ export const defaultStats: UserStats = {
 	totalContributions: 3372,
 	closedIssues: 30,
 	openIssues: 14,
+	avatarUrl: 'https://avatars.githubusercontent.com/u/10151047?v=4',
+	linesAdded: 10000000,
+	linesDeleted: 10000000,
+	linesChanged: 20000000,
+	contributionsCollection: {
+		totalCommitContributions: 2000,
+		restrictedContributionsCount: 0,
+		totalIssueContributions: 100,
+		totalRepositoryContributions: 50,
+		totalPullRequestContributions: 100,
+		totalPullRequestReviewContributions: 50,
+		contributionCalendar: {
+			totalContributions: 3372,
+			weeks: [],
+		},
+	},
 	fetchedAt: 1706728549589,
-	contributionData: [
+	contributionCalendar: [
 		{
 			contributionCount: 1,
 			date: '2013-10-16',

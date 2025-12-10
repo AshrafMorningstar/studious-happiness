@@ -24,7 +24,7 @@ export function CodeMetricsCard({userStats}: {userStats: UserStats}) {
 				<span className="font-semibold">
 					<AnimatedCounter
 						value={Math.round(
-							userStats.totalCommits / userStats.totalPullRequests,
+							userStats.totalCommits / (userStats.totalPullRequests || 1),
 						)}
 						duration={3}
 						delay={1}

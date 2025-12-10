@@ -40,7 +40,7 @@ export function LanguagesContent({userStats}: {userStats: UserStats}) {
 							>
 								<p
 									className={`text-md ${
-										Languages[lang.languageName].color
+										Languages[lang.languageName]?.color || 'text-white'
 									} font-bold text-center`}
 								>
 									{lang.languageName}

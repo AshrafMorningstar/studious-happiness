@@ -4,6 +4,8 @@ import {UserStats} from '../../config';
 import {AnimatedCounter} from '../Effects/AnimatedCounter';
 import {fadeInAndSlideUp} from '../../functions/animations';
 
+import {calculateStreaks} from '../../functions/utils';
+
 const CommitStreak = ({streak}) => (
 	<div className="flex flex-col items-center justify-center">
 		<p className="text-3xl font-bold">
@@ -15,13 +17,15 @@ const CommitStreak = ({streak}) => (
 
 export function CommitStreakCard({userStats}: {userStats: UserStats}) {
 	const frame = useCurrentFrame();
+	const {currentStreak} = calculateStreaks(userStats.contributionCalendar);
+
 	return (
 		<div
 			className="bg-[#282a36] text-[#f8f8f2] rounded-lg p-4 shadow-lg overflow-hidden relative text-white w-full"
 			style={fadeInAndSlideUp(frame)}
 		>
 			<h2 className="text-xl font-semibold mb-4 opacity-80">Commit Streak</h2>
-			<CommitStreak streak={200} />
+			<CommitStreak streak={currentStreak} />
 		</div>
 	);
 }
