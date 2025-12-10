@@ -17,47 +17,40 @@ export function Card({children, userStats}: CardProps) {
 		return null;
 	}
 
-	// Animation for border gradient
-	const rotation = frame * 2;
+	const shimmerPos = (frame * 15) % 800;
 
 	return (
-		<AbsoluteFill className="bg-transparent font-sans text-white">
+		<AbsoluteFill className="bg-[#000000] font-sans text-white flex items-center justify-center">
 			<Background />
 
-			{/* Main Content Container with Premium Glassmorphism */}
-			<AbsoluteFill className="p-4 flex items-center justify-center">
-				<div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl flex flex-col group">
-					{/* Moving Gradient Border */}
+			{/* Main Card Container */}
+			<div className="relative z-10 p-[1px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-white/20 via-white/5 to-white/10 backdrop-blur-xl">
+				{/* Inner Card Background */}
+				<div className="bg-black/40 backdrop-blur-md rounded-[23px] w-full h-full relative overflow-hidden flex flex-col">
+					{/* Subtle Shimmer Effect on Surface */}
 					<div
-						className="absolute -inset-[150%] opacity-40 blur-xl" // Extended inset for full coverage
-						style={{
-							background: `conic-gradient(from ${rotation}deg, #FF0080, #7928CA, #FF0080)`,
-						}}
+						className="absolute top-0 bottom-0 w-[200px] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 pointer-events-none"
+						style={{transform: `translateX(${shimmerPos - 300}px)`}}
 					/>
 
-					{/* Inner Content Background (The actual glass card) */}
-					<div className="absolute inset-[1px] bg-slate-900/80 backdrop-blur-2xl rounded-2xl flex flex-col overflow-hidden">
-						{/* Top shine effect */}
-						<div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-70" />
+					{/* Top Highlight Line */}
+					<div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-50" />
 
-						{/* Watermark with Pulse */}
-						<div className="absolute top-4 right-5 z-50 flex items-center gap-2">
-							<div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]" />
-							<span
-								className="text-[10px] font-bold tracking-[0.2em] text-cyan-100 uppercase drop-shadow-md"
-								style={{textShadow: '0 0 10px rgba(34, 211, 238, 0.5)'}}
-							>
-								AshrafMorningstar
-							</span>
-						</div>
-
-						{/* Content */}
-						<div className="relative z-10 flex-1 w-full h-full p-2">
-							{children}
-						</div>
+					{/* Branding */}
+					<div className="absolute top-5 right-6 z-50 flex items-center gap-2">
+						<div className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)] animate-pulse" />
+						<span
+							className="text-[9px] font-semibold tracking-[0.25em] text-white/70 uppercase"
+							style={{fontFamily: '"Inter", sans-serif'}}
+						>
+							AshrafMorningstar
+						</span>
 					</div>
+
+					{/* Content Wrapper */}
+					<div className="relative z-10 flex-1 p-3">{children}</div>
 				</div>
-			</AbsoluteFill>
+			</div>
 		</AbsoluteFill>
 	);
 }

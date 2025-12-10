@@ -13,10 +13,13 @@ const {FPS, DurationInFrames} = Config;
 
 export const RemotionRoot = () => {
 	const calculateMetadata: CalculateMetadataFunction<MainProps> = async (
-		props
+		props,
 	) => {
-		const {usernames} = getInputProps();
-		const userStats = await getUserStats(usernames as string[]);
+		const {usernames, userStats: inputUserStats} = getInputProps() as {
+			usernames: string[];
+			userStats?: MainProps['userStats'];
+		};
+		const userStats = inputUserStats || (await getUserStats(usernames));
 
 		return {
 			props: {

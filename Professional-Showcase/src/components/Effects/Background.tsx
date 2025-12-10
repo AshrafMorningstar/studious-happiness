@@ -7,59 +7,47 @@ export const Background = () => {
 	const frame = useCurrentFrame();
 	const {width, height} = useVideoConfig();
 
-	// High-performance particle system
+	// Elegant particle system
 	const particles = useMemo(() => {
-		return new Array(150).fill(0).map(() => ({
+		return new Array(80).fill(0).map(() => ({
 			x: Math.random() * width,
 			y: Math.random() * height,
-			size: Math.random() * 3 + 0.5,
-			speedY: Math.random() * 0.5 + 0.1,
-			speedX: (Math.random() - 0.5) * 0.2,
-			opacity: Math.random() * 0.6 + 0.2,
-			color: Math.random() > 0.5 ? '#00d2ff' : '#a78bfa', // Cyan or Violet
+			size: Math.random() * 2 + 0.2, // Smaller
+			speedY: Math.random() * 0.2 + 0.05,
+			speedX: (Math.random() - 0.5) * 0.1,
+			opacity: Math.random() * 0.5 + 0.1,
+			color: Math.random() > 0.8 ? '#fcd34d' : '#e2e8f0', // Gold or Slate-200
 		}));
 	}, [width, height]);
 
-	// Smooth animation time
-	const t = frame * 0.02;
+	// Slower animation time
+	const t = frame * 0.01;
 
 	return (
 		<AbsoluteFill className="bg-[#020617] overflow-hidden">
-			{/* Deep Cosmological Base */}
-			<div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#020617] to-black" />
+			{/* Deep Void Base */}
+			<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-900/40 via-[#000000] to-black" />
 
-			{/* Aurora / Nebula Effects - Multi-layered */}
+			{/* Subtle Nebula Effects */}
 			<div
-				className="absolute rounded-full opacity-40 blur-[150px] mix-blend-screen"
+				className="absolute rounded-full opacity-20 blur-[120px]"
 				style={{
-					background: 'conic-gradient(from 0deg, #00d2ff, #3b82f6, #00d2ff)',
-					width: width * 1.2,
-					height: width * 1.2,
-					top: -width * 0.4 + Math.sin(t * 0.3) * 50,
-					left: -width * 0.3 + Math.cos(t * 0.2) * 50,
-				}}
-			/>
-
-			<div
-				className="absolute rounded-full opacity-30 blur-[120px] mix-blend-screen"
-				style={{
-					background: 'conic-gradient(from 180deg, #a855f7, #6366f1, #a855f7)',
+					background: '#0ea5e9', // Sky Blue
 					width: width * 1.0,
 					height: width * 1.0,
-					bottom: -width * 0.3 - Math.cos(t * 0.3) * 60,
-					right: -width * 0.3 - Math.sin(t * 0.4) * 60,
+					top: -width * 0.4 + Math.sin(t * 0.5) * 30,
+					left: -width * 0.2 + Math.cos(t * 0.3) * 30,
 				}}
 			/>
 
-			{/* Cyberpunk Accent Glow */}
 			<div
-				className="absolute rounded-full opacity-20 blur-[100px] mix-blend-color-dodge"
+				className="absolute rounded-full opacity-10 blur-[150px]"
 				style={{
-					background: '#f472b6',
-					width: width * 0.5,
-					height: width * 0.5,
-					top: height * 0.5 + Math.sin(t * 0.8) * 100,
-					left: width * 0.5 + Math.cos(t * 0.8) * 100,
+					background: '#fbbf24', // Amber/Gold
+					width: width * 0.8,
+					height: width * 0.8,
+					bottom: -width * 0.3 - Math.cos(t * 0.4) * 40,
+					right: -width * 0.2 - Math.sin(t * 0.5) * 40,
 				}}
 			/>
 
@@ -81,29 +69,24 @@ export const Background = () => {
 							width: p.size,
 							height: p.size,
 							backgroundColor: p.color,
-							opacity: p.opacity + Math.sin(frame * 0.1 + i) * 0.2, // Twinkle
-							boxShadow: `0 0 ${p.size * 4}px ${p.color}`,
+							opacity: p.opacity + Math.sin(frame * 0.05 + i) * 0.2,
+							boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
 						}}
 					/>
 				);
 			})}
 
-			{/* 3D Hexagonal Grid Floor */}
-			<AbsoluteFill
+			{/* Heavy Cinematics Vignette */}
+			<div className="absolute inset-0 bg-[radial-gradient(transparent_40%,_#000000_100%)] opacity-80" />
+
+			{/* Scanlines (Optional, keep subtle) */}
+			<div
+				className="absolute inset-0 pointer-events-none opacity-[0.03]"
 				style={{
-					backgroundImage: `
-                        linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px), 
-                        linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px)
-                    `,
-					backgroundSize: '60px 60px',
-					opacity: 0.25,
-					maskImage: 'linear-gradient(to bottom, transparent, black 40%)',
-					transform: `perspective(1000px) rotateX(60deg) translateY(${frame % 60}px) scale(2)`,
+					background:
+						'repeating-linear-gradient(0deg, transparent, transparent 1px, #fff 1px, transparent 2px)',
 				}}
 			/>
-
-			{/* Vignette for cinematic look */}
-			<div className="absolute inset-0 bg-[radial-gradient(transparent_0%,_#000000_100%)] opacity-60" />
 		</AbsoluteFill>
 	);
 };

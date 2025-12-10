@@ -1,0 +1,60 @@
+name: Deploy Professional Showcase
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight
+  workflow_dispatch: # Allows manual run
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate GitHub Stats
+        uses: AshrafMorningstar/stats-action@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # This action typically outputs 'github-user-stats.json' in the root
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v2
+
+      - name: Install Dependencies
+        working-directory: ./Professional-Showcase
+        run: npm ci
+
+      - name: Inject Stats into Remotion
+        working-directory: ./Professional-Showcase
+        run: node inject-stats.js ../github-user-stats.json
+
+      - name: Render Showcases
+        working-directory: ./Professional-Showcase
+        run: npm run render
+
+      - name: Prepare Output Directory
+        run: |
+          mkdir -p output
+          cp Professional-Showcase/out/*.gif output/
+          cp github-user-stats.json output/stats.json
+
+          # Create a README for the output folder
+          echo "# Generated Outputs" > output/README.md
+          echo "Generated on $(date)" >> output/README.md
+
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Showcase Stats and Visuals [skip ci]"
+          file_pattern: output/*
