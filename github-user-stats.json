@@ -9,45 +9,45 @@
   "twitterUsername": "AMS_Morningstar",
   "websiteUrl": null,
   "createdAt": "2020-12-23T11:59:27Z",
-  "repoViews": 1509,
-  "linesOfCodeChanged": 79591955,
-  "linesAdded": 79551697,
-  "linesDeleted": 40258,
-  "commitCount": 245386,
-  "totalCommits": 398151,
-  "totalPullRequests": 1088,
+  "repoViews": 1415,
+  "linesOfCodeChanged": 96241338,
+  "linesAdded": 81541276,
+  "linesDeleted": 14700062,
+  "commitCount": 245430,
+  "totalCommits": 398195,
+  "totalPullRequests": 1089,
   "totalPullRequestReviews": 0,
-  "codeByteTotal": 103417071,
+  "codeByteTotal": 103717566,
   "topLanguages": [
     {
       "languageName": "HTML",
       "color": "#e34c26",
-      "value": 37396017,
-      "percentage": 36.16
+      "value": 37428790,
+      "percentage": 36.09
     },
     {
       "languageName": "CSS",
       "color": "#663399",
-      "value": 37322437,
-      "percentage": 36.09
+      "value": 37337440,
+      "percentage": 36
     },
     {
       "languageName": "JavaScript",
       "color": "#f1e05a",
-      "value": 23034881,
-      "percentage": 22.27
+      "value": 23074599,
+      "percentage": 22.25
     },
     {
       "languageName": "TypeScript",
       "color": "#3178c6",
-      "value": 2757340,
-      "percentage": 2.67
+      "value": 2970341,
+      "percentage": 2.86
     },
     {
       "languageName": "Python",
       "color": "#3572A5",
       "value": 1279993,
-      "percentage": 1.24
+      "percentage": 1.23
     },
     {
       "languageName": "C++",
@@ -59,7 +59,7 @@
       "languageName": "Java",
       "color": "#b07219",
       "value": 274798,
-      "percentage": 0.27
+      "percentage": 0.26
     },
     {
       "languageName": "Shell",
@@ -130,14 +130,14 @@
   "repositoriesContributedTo": 11,
   "discussionsStarted": 2,
   "discussionsAnswered": 0,
-  "totalContributions": 81881,
+  "totalContributions": 81938,
   "contributionStats": {
     "longestStreak": 191,
-    "currentStreak": 3,
+    "currentStreak": 4,
     "mostActiveDay": "Saturday",
-    "averagePerDay": 45.01,
-    "averagePerWeek": 315.1,
-    "averagePerMonth": 1350.43,
+    "averagePerDay": 45.02,
+    "averagePerWeek": 315.15,
+    "averagePerMonth": 1350.63,
     "monthlyBreakdown": [
       {
         "month": "2020-12",
@@ -381,33 +381,33 @@
       },
       {
         "month": "2025-12",
-        "contributions": 228
+        "contributions": 285
       }
     ]
   },
   "repoStats": {
-    "totalRepos": 46,
-    "publicRepos": 46,
+    "totalRepos": 57,
+    "publicRepos": 57,
     "privateRepos": 0,
     "archivedRepos": 0,
     "forkedRepos": 1,
-    "originalRepos": 45,
-    "activeRepos": 46,
+    "originalRepos": 56,
+    "activeRepos": 57,
     "reposWithStars": 37,
-    "reposCreatedThisYear": 45,
-    "averageStarsPerRepo": 1.46
+    "reposCreatedThisYear": 56,
+    "averageStarsPerRepo": 1.18
   },
   "computedStats": {
-    "totalRepos": 46,
-    "publicRepos": 46,
+    "totalRepos": 57,
+    "publicRepos": 57,
     "privateRepos": 0,
     "archivedRepos": 0,
     "forkedRepos": 1,
-    "originalRepos": 45,
-    "activeRepos": 46,
+    "originalRepos": 56,
+    "activeRepos": 57,
     "reposWithStars": 37,
-    "reposCreatedThisYear": 45,
-    "averageStarsPerRepo": 1.46,
+    "reposCreatedThisYear": 56,
+    "averageStarsPerRepo": 1.18,
     "languageCount": 17,
     "primaryLanguage": "HTML",
     "primaryLanguageThisYear": "HTML",
@@ -415,32 +415,32 @@
       {
         "languageName": "HTML",
         "color": "#e34c26",
-        "value": 37396017,
-        "percentage": 36.16
+        "value": 37428790,
+        "percentage": 36.09
       },
       {
         "languageName": "CSS",
         "color": "#663399",
-        "value": 37322437,
-        "percentage": 36.09
+        "value": 37337440,
+        "percentage": 36
       },
       {
         "languageName": "JavaScript",
         "color": "#f1e05a",
-        "value": 23034881,
-        "percentage": 22.27
+        "value": 23074599,
+        "percentage": 22.25
       },
       {
         "languageName": "TypeScript",
         "color": "#3178c6",
-        "value": 2757340,
-        "percentage": 2.67
+        "value": 2970341,
+        "percentage": 2.86
       },
       {
         "languageName": "Python",
         "color": "#3572A5",
         "value": 1279993,
-        "percentage": 1.24
+        "percentage": 1.23
       },
       {
         "languageName": "C++",
@@ -452,7 +452,7 @@
         "languageName": "Java",
         "color": "#b07219",
         "value": 274798,
-        "percentage": 0.27
+        "percentage": 0.26
       },
       {
         "languageName": "Shell",
@@ -558,23 +558,23 @@
       "video-generation",
       "video-generator"
     ],
-    "contributionsThisYear": 14185,
+    "contributionsThisYear": 14242,
     "contributionsLastYear": 9380,
-    "yearOverYearGrowth": 51.23,
+    "yearOverYearGrowth": 51.83,
     "mostProductiveMonth": {
       "month": "2025-11",
       "contributions": 9622
     }
   },
   "contributionsCollection": {
-    "totalCommitContributions": 79654,
+    "totalCommitContributions": 79699,
     "restrictedContributionsCount": 0,
     "totalIssueContributions": 1089,
-    "totalRepositoryContributions": 46,
-    "totalPullRequestContributions": 1088,
+    "totalRepositoryContributions": 57,
+    "totalPullRequestContributions": 1089,
     "totalPullRequestReviewContributions": 0,
     "contributionCalendar": {
-      "totalContributions": 81881,
+      "totalContributions": 81938,
       "weeks": [
         {
           "contributionDays": [
@@ -8903,8 +8903,12 @@
               "date": "2025-12-10"
             },
             {
-              "contributionCount": 9,
+              "contributionCount": 49,
               "date": "2025-12-11"
+            },
+            {
+              "contributionCount": 17,
+              "date": "2025-12-12"
             }
           ]
         }
@@ -9045,5 +9049,5 @@
   ],
   "closedIssues": 1083,
   "openIssues": 6,
-  "fetchedAt": 1765457606100
+  "fetchedAt": 1765543856073
 }
